@@ -202,7 +202,6 @@ namespace ActivityMonitorMain
             {
                 data.Clear();
                 string data_read;
-                Console.WriteLine("Waiting for connection");
                 st.WaitForConnection();
                 while (st.IsConnected)
                 {
