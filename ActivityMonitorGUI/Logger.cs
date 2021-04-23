@@ -287,9 +287,9 @@ namespace ActivityMonitorMain
             if (!String.IsNullOrEmpty(typed))
             {
                 fw.WriteLine("    {");
-                fw.WriteLine("        type: \"" + "kbd" + "\",");
-                fw.WriteLine("        value: \"" + typed + "\",");
-                fw.WriteLine($"        timeStamp: \"{parse_Timestamp()}\"");
+                fw.WriteLine("        \"type\": \"" + "kbd" + "\",");
+                fw.WriteLine("        \"value\": \"" + typed + "\",");
+                fw.WriteLine($"        \"timeStamp\": {parse_Timestamp()}");
                 fw.WriteLine("    },");
                 typed = "";
             }
@@ -355,9 +355,9 @@ namespace ActivityMonitorMain
                 if (!String.IsNullOrEmpty(typed))
                 {
                     fw.WriteLine("    {");
-                    fw.WriteLine("        type: \"" + "kbd" + "\",");
-                    fw.WriteLine("        value: \"" + typed + "\",");
-                    fw.WriteLine($"        timeStamp: \"{parse_Timestamp()}\"");
+                    fw.WriteLine("        \"type\": \"" + "kbd" + "\",");
+                    fw.WriteLine("        \"value\": \"" + typed + "\",");
+                    fw.WriteLine($"        \"timeStamp\": {parse_Timestamp()}");
                     fw.WriteLine("    },");
                     typed = "";
                 }
@@ -377,13 +377,13 @@ namespace ActivityMonitorMain
                     {
                         timecnt.Stop();
                         fw.WriteLine("    {");
-                        fw.WriteLine("        type: \"dblclick\",");
-                        fw.WriteLine($"        image: \"{img}\",");
-                        fw.WriteLine("        coord: {");
-                        fw.WriteLine("            x: " + p.pt.x + ",");
-                        fw.WriteLine("            y: " + p.pt.y);
+                        fw.WriteLine("        \"type\": \"dblclick\",");
+                        fw.WriteLine($"        \"image\": \"{img}\",");
+                        fw.WriteLine("        \"coord\": {");
+                        fw.WriteLine("            \"x\": " + p.pt.x + ",");
+                        fw.WriteLine("            \"y\": " + p.pt.y);
                         fw.WriteLine("        },");
-                        fw.WriteLine($"        timeStamp: \"{parse_Timestamp()}\"");
+                        fw.WriteLine($"        \"timeStamp\": {parse_Timestamp()}");
                         fw.WriteLine("    },");
                         fn = false;
                         return IntPtr.Zero;
@@ -400,13 +400,13 @@ namespace ActivityMonitorMain
                     q = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
                     img = takeSnap(q.pt.x, q.pt.y);
                     fw.WriteLine("    {");
-                    fw.WriteLine("        type: \"rclick\",");
-                    fw.WriteLine($"        image: \"{img}\",");
-                    fw.WriteLine("        coord: {");
-                    fw.WriteLine("            x: " + q.pt.x + ",");
-                    fw.WriteLine("            y: " + q.pt.y);
+                    fw.WriteLine("        \"type\": \"rclick\",");
+                    fw.WriteLine($"        \"image\": \"{img}\",");
+                    fw.WriteLine("        \"coord\": {");
+                    fw.WriteLine("            \"x\": " + q.pt.x + ",");
+                    fw.WriteLine("            \"y\": " + q.pt.y);
                     fw.WriteLine("        },");
-                    fw.WriteLine($"        timeStamp: \"{parse_Timestamp()}\"");
+                    fw.WriteLine($"        \"timeStamp\": {parse_Timestamp()}");
                     fw.WriteLine("    },");
                 }
             }
@@ -507,9 +507,9 @@ namespace ActivityMonitorMain
             if (!input.StartsWith("kbd") && !String.IsNullOrEmpty(typed))
             {
                 fw.WriteLine("    {");
-                fw.WriteLine("        type: \"" + "kbd" + "\",");
-                fw.WriteLine("        value: \"" + typed + "\",");
-                fw.WriteLine($"        timeStamp: \"{parse_Timestamp()}\"");
+                fw.WriteLine("        \"type\": \"" + "kbd" + "\",");
+                fw.WriteLine("        \"value\": \"" + typed + "\",");
+                fw.WriteLine($"        \"timeStamp\": {parse_Timestamp()}");
                 fw.WriteLine("    },");
                 typed = "";
             }
@@ -532,9 +532,9 @@ namespace ActivityMonitorMain
                     if (strs[i] == "kp" || strs[i] == "kh") continue;
                     if (strs[i] == "") continue;
                     fw.WriteLine("    {");
-                    fw.WriteLine("        type: \"" + strs[0] + "\",");
-                    fw.WriteLine("        value: \"" + Filter(strs[i], cased) + "\",");
-                    fw.WriteLine($"        timeStamp: \"{parse_Timestamp()}\"");
+                    fw.WriteLine("        \"type\": \"" + strs[0] + "\",");
+                    fw.WriteLine("        \"value\": \"" + Filter(strs[i], cased) + "\",");
+                    fw.WriteLine($"        \"timeStamp\": {parse_Timestamp()}");
                     fw.WriteLine("    },");
                 }
             }
@@ -562,15 +562,15 @@ namespace ActivityMonitorMain
             if (strs[0] == "kc")
             {
                 fw.WriteLine("    {");
-                fw.WriteLine("        type: \"" + "kbd_shortcut" + "\",");
-                fw.Write("        value: [\"" + Filter(strs[1], cased));
+                fw.WriteLine("        \"type\": \"" + "kbd_shortcut" + "\",");
+                fw.Write("        \"value\": [\"" + Filter(strs[1], cased));
                 for (int i = 2; i < strs.Length; i++)
                 {
                     if (strs[i] == "") continue;
                     fw.Write("\", \"" + Filter(strs[i], cased));
                 }
                 fw.Write("\"]," + Environment.NewLine);
-                fw.WriteLine($"        timeStamp: \"{parse_Timestamp()}\"");
+                fw.WriteLine($"        \"timeStamp\": {parse_Timestamp()}");
                 fw.WriteLine("    },");
             }
         }
@@ -584,13 +584,13 @@ namespace ActivityMonitorMain
         {
             timecnt.Stop();
             fw.WriteLine("    {");
-            fw.WriteLine("        type: \"lclick\",");
-            fw.WriteLine($"        image: \"{img}\",");
-            fw.WriteLine("        coord: {");
-            fw.WriteLine("            x: " + p.pt.x + ",");
-            fw.WriteLine("            y: " + p.pt.y);
+            fw.WriteLine("        \"type\": \"lclick\",");
+            fw.WriteLine($"        \"image\": \"{img}\",");
+            fw.WriteLine("        \"coord\": {");
+            fw.WriteLine("            \"x\": " + p.pt.x + ",");
+            fw.WriteLine("            \"y\": " + p.pt.y);
             fw.WriteLine("        },");
-            fw.WriteLine($"        timeStamp: \"{parse_Timestamp()}\"");
+            fw.WriteLine($"        \"timeStamp\": {parse_Timestamp()}");
             fw.WriteLine("    },");
             fn = false;
         }
